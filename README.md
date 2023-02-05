@@ -1,4 +1,4 @@
-# notetaken
+# notepad
 
 By Jose Del Valle
 
