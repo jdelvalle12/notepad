@@ -23,20 +23,24 @@ app.use(clog);
 app.use(express.static('public'));
 
 // GET Route for homepage
-// app.get('/notes', (req, res) =>
-//   res.sendFile(path.join(_dirname, '/public/index.html'))
-//   );
+app.get('/', (req, res) =>
+  res.sendFile(path.join(_dirname, '/public/index.html'))
+  );
 
 // GET Route for notes page
-app.get('/', (req, res) =>
+app.get('/notes', (req, res) =>
   res.sendFile(path.join(__dirname, '/public/notes.html'))
 );
 
 
-// GET request for notes
+// Route to return all saved notes as JSON
 app.get('/api/notes', (req, res) => {
-  console.info(`GET /notes`);
-  res.status(200).json(notes);
+  fs.readFile('./db/notes.json', 'utf8', (err,data) => {
+    if (err) {
+      console.error(err);
+    }
+    res.send(data);
+  })
 });
 // res.json() allows us to return JSON instead of a buffer, string, or static file
 app.get('/api/notes', (req, res) => res.json(noteData));
