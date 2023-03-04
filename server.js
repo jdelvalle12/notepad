@@ -23,12 +23,12 @@ app.use(clog);
 app.use(express.static('public'));
 
 // GET Route for homepage
-// app.get('/', (req, res) =>
+// app.get('/notes', (req, res) =>
 //   res.sendFile(path.join(_dirname, '/public/index.html'))
 //   );
 
 // GET Route for notes page
-app.get('/api/notes', (req, res) =>
+app.get('/', (req, res) =>
   res.sendFile(path.join(__dirname, '/public/notes.html'))
 );
 
@@ -68,11 +68,11 @@ fs.readFile('/api/notes', 'utf8', (err, data) => {
 
     // Add a new note
     parsedNotes.push(newNote);
-
+    console.log(newNote.id);
     // Write updated notes back to the file
     fs.writeFile(
-      '/api/notes',
-      JSON.stringify(parsedNotes),
+      './db/notes.json',
+      JSON.stringify(parsedNotes, null, 4),
       (writeErr) =>
         writeErr
           ? console.error(writeErr)
@@ -100,6 +100,25 @@ app.get('*', (req, res) =>
 // app.get('/notes', (req, res) =>
 //   res.sendFile(path.join(__dirname, '/public/notes.html'))
 // );
+
+//DELETE a note
+app.delete('/api/notes/:id', (req, res) => {
+  const note = req.params.id;
+  console.log(noteData[1].id);
+  for (let i = 0; i < noteData.length; i++) {
+    if (note === noteData[i].id) {
+      noteData.splice(i, 1)      
+    }
+  }
+  fs.writeFile (
+    './db/notes.json',
+    JSON.stringify(noteData),
+    (writeErr) => {
+      if (writeErr) throw error;
+      res.json('deleted note') 
+    }
+  );
+});
 
 app.listen(PORT, () =>
   console.log(`App listening at http://localhost:${PORT}`)
