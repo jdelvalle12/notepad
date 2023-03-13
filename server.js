@@ -105,10 +105,6 @@ fs.readFile('./db/db.json', 'utf8', (err, data) => {
 app.get('*', (req, res) =>
   res.sendFile(path.join(__dirname, '/public/index.html'))
 );
-//Route to direct users to a notes.html page
-// app.get('/notes', (req, res) =>
-//   res.sendFile(path.join(__dirname, '/public/notes.html'))
-// );
 
 //DELETE a note
 app.delete('/api/notes/:id', (req, res) => {
