@@ -25,7 +25,10 @@ https://notetaken.herokuapp.com/
 
 ## Screenshots
 
-![image](https://user-images.githubusercontent.com/104731082/216799180-3ce79613-4475-43d7-b6c2-9c936a84eb63.png)
+![image](https://user-images.githubusercontent.com/104731082/224610876-e82db768-a29c-42c1-bb50-720e80f09199.png)
+![image](https://user-images.githubusercontent.com/104731082/224610956-234ad91e-2033-4ef2-aa0a-c7313f57372b.png)
+![image](https://user-images.githubusercontent.com/104731082/224611150-8a3dde4c-0d4e-4906-95ec-c952efe37c85.png)
+
 
 
 
